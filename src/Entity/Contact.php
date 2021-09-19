@@ -2,16 +2,38 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Contact
 {
+    /**
+     * @Assert\NotBlank
+     */
     protected $nom;
+
+    /**
+     * @Assert\NotBlank
+     */
     protected $prenom;
+
+    /**
+     * @Assert\NotBlank
+     */
     protected $email;
+
+    /**
+     * @Assert\NotBlank
+     */
     protected $sujet;
+
+    /**
+     * @Assert\NotBlank
+     */
     protected $message;
 
     /**
      * Get the value of nom
+     * 
      */
     public function getNom()
     {
@@ -32,6 +54,7 @@ class Contact
 
     /**
      * Get the value of email
+     * 
      */
     public function getEmail()
     {
