@@ -18,6 +18,7 @@ class AppFixtures extends Fixture
             $project->setName($faker->words(2, true));
             $project->setDescription($faker->paragraph());
             $project->setLink($faker->url());
+            $project->setLinkProject($faker->optional()->url());
             $manager->persist($project);
         }
 

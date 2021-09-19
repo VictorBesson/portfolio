@@ -32,6 +32,11 @@ class Project
      */
     private $link;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkProject;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Project
     public function setLink(string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getLinkProject(): ?string
+    {
+        return $this->linkProject;
+    }
+
+    public function setLinkProject(?string $linkProject): self
+    {
+        $this->linkProject = $linkProject;
 
         return $this;
     }

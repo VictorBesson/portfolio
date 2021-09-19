@@ -6,23 +6,29 @@
 {% block body %}
 
 
-	<div class="album py-5 bg-dark">
+	<div class="album py-3 bg-dark">
 		<div class="container">
 
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				<div class="col">
-					<div class="card shadow-sm">
+				{% for project in projects %}
+					<div class="col">
+						<div class="card shadow-sm">
 
-						<div class="card-body bg-dark">
-							<p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate quae quibusdam debitis eligendi excepturi enim deserunt quam blanditiis dolorem similique sunt facere sequi culpa iure, adipisci tenetur ipsam? Nisi, quibusdam.</p>
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group">
-									<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-									<button type="button" class="btn btn-sm btn-outline-secondary">Github</button>
+							<div class="card-body bg-dark">
+								<h1>{{ project.name }}</h1>
+								<p class="card-text">{{ project.description }}</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										{%if project.linkProject %}
+											<button onclick="location.href='{{ project.linkProject }}'" type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+										{% endif %}
+										<button onclick="location.href='{{ project.link }}'" type="button" class="btn btn-sm btn-outline-secondary">Github</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-			{% endblock %}
+				{% endfor %}
+			</div>
+		</div>
+	{% endblock %}
