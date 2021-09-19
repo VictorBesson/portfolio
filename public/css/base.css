@@ -1,5 +1,12 @@
+html {
+  font-size: 1.1rem;
+}
+
 body {
   background-image: url("../image/background.jpg");
   background-size: cover;
-  font-size: xx-large;
+}
+
+header {
+  font-size: 1.8rem;
 }
