@@ -5,6 +5,7 @@ namespace App\Entity;
 class Contact
 {
     protected $nom;
+    protected $prenom;
     protected $email;
     protected $sujet;
     protected $message;
@@ -85,6 +86,26 @@ class Contact
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prenom
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set the value of prenom
+     *
+     * @return  self
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }

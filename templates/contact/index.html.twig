@@ -4,4 +4,37 @@
 {% endblock %}
 
 {% block body %}
-	{{ form(formContact) }}{% endblock %}
+	<div class="container">
+		<div class="form-control">
+			<div>
+				{{ form_errors(formContact)}}
+			</div>
+
+			<div class="">
+				{{ form_row(formContact.nom) }}
+			</div>
+			<div class="">
+				{{ form_row(formContact.prenom) }}
+			</div>
+
+			<div class="">
+				{{ form_row(formContact.email) }}
+			</div>
+
+
+			<div class="">
+				{{ form_row(formContact.sujet) }}
+			</div>
+
+			<div class="">
+				{{ form_row(formContact.message) }}
+			</div>
+
+
+			<div class="">
+				{{ form_row(formContact.Envoyer) }}
+			</div>
+		</div>
+
+	</div>
+</div>{% endblock %}
