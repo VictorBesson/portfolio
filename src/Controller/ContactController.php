@@ -31,11 +31,23 @@ class ContactController extends AbstractController
 
             $contact = $form->getData();
             $mailer->sendEmailToMe($contact);
+
+            return $this->redirectToRoute('contact_submitted', [
+                'name' => $contact->getNom() . ' ' . $contact->getPrenom()
+            ]);
         }
 
 
         return $this->render('contact/index.html.twig', [
             'formContact' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/contact/{name}', name: 'contact_submitted')]
+    public function contactSubmitted($name)
+    {
+        return $this->render('contact/contact_submitted.html.twig', [
+            'name' => $name
         ]);
     }
 }

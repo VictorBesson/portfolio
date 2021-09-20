@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<div class="container container card shadow p-3 mb-4 bg-dark rounded">
+		<h3>Merci pour le message
+			{{ name }}, je vous recontacterais dès que possible</h3>
+		<p>
+			<a class="" href="{{ path('home') }}">Retour à l'accueil</a>
+		</p>
+
+	</div>
+{% endblock %}
