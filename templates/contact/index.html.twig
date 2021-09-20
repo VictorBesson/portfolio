@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<div class="container card shadow p-3 mb-4 bg-dark rounded">
+		<h1>Me contacter</h1>
+
+		{{ form(formContact) }}
+
+
+		</div>
+	{% endblock %}
