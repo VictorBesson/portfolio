@@ -2,7 +2,8 @@
 
 namespace App\Mailer;
 
-use Twig\Environment;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 /**
  * Undocumented class
@@ -11,37 +12,32 @@ class Mailer
 {
     private const EMAIL = 'victor.besson@gmail.com';
     private $mailer;
-    private $twig;
 
     /**
      * Injecting templating and mailing
      *
-     * @param Environment $twig
      * @param \Swift_Mailer $mailer
      */
-    public function __construct(Environment $twig, \Swift_Mailer $mailer)
+    public function __construct(MailerInterface $mailer)
     {
-        $this->twig = $twig;
         $this->mailer = $mailer;
     }
 
 
     public function sendEmailToMe($contact)
     {
-        $message = (new \Swift_Message($contact->getSujet()))
-            ->setFrom($contact->getEmail())
-            ->setTo(self::EMAIL)
-            ->setBody(
-                $this->twig->render(
-                    'emails/contact.txt.twig',
-                    [
-                        'firstName' => $contact->getNom(),
-                        'secondName' => $contact->getPrenom(),
-                        'message' => $contact->getMessage()
-                    ]
-                ),
-                'text/text'
-            );
+        $message = (new TemplatedEmail())
+            ->from($contact->getEmail())
+            ->to(self::EMAIL)
+            ->subject($contact->getSujet())
+            ->text('Sending emails is fun again!')
+            ->htmlTemplate('emails/contact.html.twig')
+            ->context([
+                'firstName' => $contact->getNom(),
+                'secondName' => $contact->getPrenom(),
+                'message' => $contact->getMessage(),
+                'userEmail' => $contact->getEmail(),
+            ]);
         $this->mailer->send($message);
     }
 }
